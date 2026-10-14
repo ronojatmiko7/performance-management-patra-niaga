@@ -1,7 +1,10 @@
 import { createClient } from '@supabase/supabase-js'
 
-const url = import.meta.env.VITE_SUPABASE_URL
-const key = import.meta.env.VITE_SUPABASE_ANON_KEY
+// Kunci publishable Supabase memang untuk dipakai di browser (bukan rahasia);
+// semua data dilindungi oleh fungsi RPC dengan token peserta / PIN fasilitator.
+// Env var di Vercel (bila diisi) menimpa nilai bawaan ini.
+const url = import.meta.env.VITE_SUPABASE_URL || 'https://edodmmedehuuemnnmdri.supabase.co'
+const key = import.meta.env.VITE_SUPABASE_ANON_KEY || 'sb_publishable_oZ2WIiMl2K6XcSShKhK3eg_2xm9EWC7'
 
 export const configured = Boolean(url && key)
 
