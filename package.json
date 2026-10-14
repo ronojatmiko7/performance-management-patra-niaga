@@ -1,0 +1,21 @@
+{
+  "name": "performance-management-patra-niaga",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Workbook digital pelatihan Performance Management Fundamental untuk PT Pertamina Patra Niaga (PT Performa International Indonesia)",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.45.4",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "4.3.2",
+    "vite": "5.4.8"
+  }
+}
