@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { api, configured, loadSession, storeSession, clearSession, resumeLink } from './api.js'
-import { WorkbookProvider, useWorkbook } from './store.jsx'
-import { NAV, SECTION_IDS, COMPANIES } from './data.js'
+import { WorkbookProvider, useWorkbook, unflatten } from './store.jsx'
+import { NAV, SECTION_IDS, COMPANIES, GROUP_SECTIONS, SHEET } from './data.js'
 import { Note, useScrollTop } from './ui.jsx'
 import { Tantangan, Customer, Refleksi } from './sections/Sesi1.jsx'
 import { Swot, Kuadran, Rkap, Peta } from './sections/Sesi2.jsx'
@@ -9,6 +9,7 @@ import { Kartu, Tracker, Perbaikan } from './sections/Sesi3.jsx'
 import { Komitmen, Evaluasi } from './sections/Penutup.jsx'
 import Test from './sections/Test.jsx'
 import Summary from './sections/Summary.jsx'
+import Pleno from './sections/Pleno.jsx'
 import Facilitator from './Facilitator.jsx'
 import Shell from './Shell.jsx'
 
@@ -176,7 +177,7 @@ function SaveStatus() {
 }
 
 function Workbook({ route, onLogout }) {
-  const { participant, responses, tests, evaluation, session } = useWorkbook()
+  const { participant, responses, tests, evaluation, session, groupView, groupVersion, groupInfo } = useWorkbook()
   const [questions, setQuestions] = useState([])
   const [config, setConfig] = useState({ post_open: false })
   const [menuOpen, setMenuOpen] = useState(false)
@@ -197,8 +198,11 @@ function Workbook({ route, onLogout }) {
     d.pretest = !!tests.pre
     d.posttest = !!tests.post
     d.evaluasi = !!evaluation
+    for (const id of GROUP_SECTIONS) d[id] = hasContent(groupView(id))
+    d.pleno = !!groupView('s3_perbaikan').lap_status
     return d
-  }, [responses, tests, evaluation])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [responses, tests, evaluation, groupVersion])
 
   const idx = SECTION_IDS.indexOf(current)
   const prev = SECTION_IDS[idx - 1]
@@ -218,18 +222,23 @@ function Workbook({ route, onLogout }) {
     case 's3_kartu': body = <Kartu />; break
     case 's3_tracker': body = <Tracker />; break
     case 's3_perbaikan': body = <Perbaikan />; break
+    case 'pleno': body = <Pleno />; break
     case 'komitmen': body = <Komitmen />; break
     case 'posttest': body = <Test kind="post" questions={questions} config={config} refreshConfig={refreshConfig} />; break
     case 'evaluasi': body = <Evaluasi />; break
     case 'ringkasan': body = (
       <article className="sheet">
         <header className="sheet-head no-print">
-          <p className="kicker">Ringkasan</p>
-          <h1>Workbook saya</h1>
-          <p className="intro">Semua isian Anda dalam satu halaman. Cetak atau simpan sebagai PDF untuk dibawa ke diskusi dengan atasan.</p>
+          <p className="kicker">{SHEET.ringkasan.kicker}</p>
+          <h1>{SHEET.ringkasan.title}</h1>
+          <p className="intro">{SHEET.ringkasan.intro}</p>
           <button className="btn" onClick={() => window.print()}>Cetak / simpan PDF</button>
         </header>
-        <Summary responses={responses} participant={participant} />
+        <Summary
+          responses={responses} participant={participant} tests={tests}
+          g={Object.fromEntries(GROUP_SECTIONS.map((id) => [id, unflatten(groupView(id))]))}
+          members={groupInfo?.members} company={groupInfo?.company}
+        />
       </article>
     ); break
     default: body = null
@@ -253,6 +262,7 @@ function Workbook({ route, onLogout }) {
             <span>{participant.company}{participant.unit ? ` · ${participant.unit}` : ''}</span>
             <div className="progress"><i style={{ width: `${(doneCount / total) * 100}%` }} /></div>
             <span className="small">{doneCount} dari {total} lembar terisi</span>
+            <span className="small legend"><b className="grp">K</b> lembar kelompok, diisi bersama</span>
           </div>
           {NAV.map((g) => (
             <div key={g.group} className="nav-group">
@@ -260,7 +270,7 @@ function Workbook({ route, onLogout }) {
               {g.items.map((it) => (
                 <a key={it.id} href={`#/${it.id}`} className={`${current === it.id ? 'active' : ''} ${done[it.id] ? 'done' : ''}`}>
                   <i className="dot" />
-                  <span className="grow">{it.label}</span>
+                  <span className="grow">{it.label}{it.scope === 'group' && <b className="grp" title="Lembar kelompok">K</b>}</span>
                   {it.id === 'posttest' && !config.post_open && !tests.post ? <em>terkunci</em> : <em>{it.time}</em>}
                 </a>
               ))}

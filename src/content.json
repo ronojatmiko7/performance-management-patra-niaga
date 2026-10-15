@@ -1,0 +1,204 @@
+{
+  "_note": "Sumber tunggal teks latihan. Workbook memakai file ini, dan slide di deck disamakan dengan file ini. Ubah di sini, lalu samakan slide-nya.",
+  "workbookUrl": "performance-management-patra-niaga-ronojatmiko-8131s-projects.vercel.app",
+  "sheets": [
+    {
+      "id": "pretest", "label": "Pre-test", "group": "Pembuka", "scope": "personal",
+      "slide": 3, "slideId": "pretest", "time": "08.00",
+      "kicker": "SESI 1 · PRE-TEST · 10 MENIT",
+      "title": "Pre-test: potret awal pemahaman Anda",
+      "points": [
+        "Pindai QR, lalu isi nama, anak perusahaan, dan unit kerja. Workbook langsung membuka pre-test.",
+        "10 menit, 10 soal pilihan ganda.",
+        "Jawab sendiri, tanpa diskusi. Hasilnya tidak memengaruhi penilaian kinerja.",
+        "Di akhir hari, soal yang sama muncul lagi di post-test. Selisihnya menunjukkan seberapa jauh Anda bergerak."
+      ]
+    },
+    {
+      "id": "s1_tantangan", "label": "Tantangan kita", "group": "Sesi 1 · Start With Why", "scope": "personal",
+      "slide": 9, "slideId": "tantangan", "time": "08.25",
+      "kicker": "SESI 1 · DISKUSI KELOMPOK · 15 MENIT",
+      "title": "Tantangan apa yang sedang Anda hadapi?",
+      "question": "Apa tantangan yang sedang dihadapi oleh perusahaan Anda secara umum, dan pekerjaan Anda secara khusus?",
+      "steps": [
+        "Tulis tantangan Anda di workbook, satu per baris, di kolom Perusahaan dan Pekerjaan saya.",
+        "Bacakan bergantian di meja Anda.",
+        "Pilih tiga tantangan terbesar di meja. Pemiliknya menandai ★ di workbook."
+      ],
+      "pleno": {
+        "slide": 10, "slideId": "tantangan-pleno", "kicker": "SESI 1 · PLENO · 15 MENIT",
+        "title": "Memetakan tantangan kita bersama",
+        "text": "Pilih kotak untuk setiap tantangan Anda di workbook. Layar menampilkan petanya untuk seluruh kelas. Tidak cocok di empat kotak? Pilih “Lainnya”."
+      }
+    },
+    {
+      "id": "s1_customer", "label": "Customer", "group": "Sesi 1 · Start With Why", "scope": "group",
+      "slide": 13, "slideId": "customer-diskusi", "time": "09.00",
+      "kicker": "SESI 1 · DISKUSI KELOMPOK + PLENO · 20 MENIT",
+      "title": "Siapa customer Anda, dan apa yang Anda selesaikan?",
+      "steps": [
+        "Berkumpul per anak perusahaan.",
+        "Juru tulis mengisi tabel ini di workbook, maksimal tiga customer utama.",
+        "Satu juru bicara, dua menit di pleno."
+      ]
+    },
+    {
+      "id": "s1_refleksi", "label": "Refleksi Sesi 1", "group": "Sesi 1 · Start With Why", "scope": "personal",
+      "slide": 24, "slideId": "refleksi-s1", "time": "09.55",
+      "kicker": "SESI 1 · RANGKUMAN",
+      "title": "Kembali ke Why",
+      "points": [
+        "Bisnis ada untuk meraih keuntungan dengan cara memenuhi kebutuhan customer.",
+        "Balanced Scorecard menjaga kedua hasil itu lewat proses inti serta learning and growth.",
+        "OKR mempercepat perbaikan di titik yang paling lemah, kuartal demi kuartal."
+      ],
+      "prompt": "Sebelum rehat, isi di workbook: di perspektif mana pekerjaan Anda paling banyak berkontribusi, dan apa contohnya?"
+    },
+    {
+      "id": "s2_swot", "label": "SWOT", "group": "Sesi 2 · Strategi", "scope": "group",
+      "slide": 28, "slideId": "latihan-swot", "time": "10.25",
+      "kicker": "LATIHAN SESI 2 · 20 MENIT",
+      "title": "SWOT anak perusahaan Anda",
+      "steps": [
+        "Berkelompok per anak perusahaan. Satu juru tulis membuka lembar SWOT di workbook.",
+        "Isi empat kotak SWOT, maksimal empat poin per kotak.",
+        "Untuk setiap poin, tulis buktinya: data, kejadian, atau pengamatan dari meja kerja Anda.",
+        "Tandai ★ dua poin terkuat di setiap kotak."
+      ],
+      "panel": [["HASIL", "SWOT satu halaman, dengan bukti untuk setiap poin."], ["DEBRIEF", "Kotak mana yang paling sulit diisi? Mengapa?"]]
+    },
+    {
+      "id": "s2_kuadran", "label": "Kuadran", "group": "Sesi 2 · Strategi", "scope": "group",
+      "slide": 31, "slideId": "latihan-kuadran", "time": "10.55",
+      "kicker": "LATIHAN SESI 2 · 15 MENIT",
+      "title": "Di kuadran mana perusahaan Anda?",
+      "steps": [
+        "Dari SWOT kelompok: mana yang lebih besar, peluang atau ancaman?",
+        "Mana yang lebih besar, kekuatan atau kelemahan?",
+        "Pilih jawabannya di workbook. Titik kelompok Anda muncul di matriks kelas di layar.",
+        "Tulis grand strategy kelompok dalam satu kalimat, lengkap dengan alasannya."
+      ],
+      "panel": [["HASIL", "Satu kuadran, satu grand strategy, dan satu kalimat alasan."], ["CATATAN", "Ini hipotesis kelompok untuk belajar, bukan penilaian resmi atas perusahaan."]]
+    },
+    {
+      "id": "s2_rkap", "label": "Cek RKAP", "group": "Sesi 2 · Strategi", "scope": "group",
+      "slide": 32, "slideId": "cek-rkap", "time": "11.10",
+      "kicker": "LATIHAN SESI 2 · 15 MENIT",
+      "title": "Cocokkan grand strategy dengan RKAP",
+      "intro": "Rencana Kerja dan Anggaran Perusahaan: target dan program tahunan yang disahkan pemegang saham. Di sinilah strategi berubah menjadi angka.",
+      "steps": [
+        "Tulis 3–5 target atau program utama di RKAP perusahaan Anda di workbook.",
+        "Tandai setiap target: sejalan atau tidak dengan grand strategy kelompok?",
+        "Banyak yang tidak sejalan? Diskusikan: kuadran kita yang keliru, atau ada yang belum kita lihat?"
+      ]
+    },
+    {
+      "id": "s2_peta", "label": "Strategy map", "group": "Sesi 2 · Strategi", "scope": "group",
+      "slide": 35, "slideId": "latihan-peta", "time": "11.35",
+      "kicker": "LATIHAN SESI 2 · 20 MENIT",
+      "title": "Susun strategy map anak perusahaan Anda",
+      "steps": [
+        "Buka lembar Strategy map. Grand strategy kelompok sudah tercantum di bagian paling atas.",
+        "Letakkan target RKAP utama di Finansial dan Pelanggan.",
+        "Isi Proses dan Pembelajaran: apa yang harus benar agar target itu tercapai?",
+        "Tarik panah sebab-akibat dengan kata “sehingga”. Maksimal dua sasaran per perspektif."
+      ],
+      "panel": [["HASIL", "Strategy map satu halaman. Dipakai lagi di Sesi 3 dan di pleno sore."], ["DEBRIEF", "Sasaran mana yang paling bergantung pada unit Anda?"]],
+      "after": {
+        "slide": 36, "slideId": "implikasi",
+        "text": "Sebelum ISHOMA: di workbook, tandai ★ satu sasaran di strategy map kelompok yang paling digerakkan oleh unit Anda. Sesi 3 dimulai dari sana."
+      }
+    },
+    {
+      "id": "s3_kartu", "label": "Kartu KPI", "group": "Sesi 3 · KPI Unit", "scope": "group",
+      "slide": 48, "slideId": "latihan-kartu", "time": "14.00",
+      "kicker": "LATIHAN SESI 3 · 12 MENIT",
+      "title": "Bedah KPI unit Anda",
+      "steps": [
+        "Buka lembar Kartu KPI. Pilih satu KPI unit dengan bobot terbesar.",
+        "Isi delapan elemen, plus sasaran di strategy map yang didukung.",
+        "Tambahkan satu lead indicator untuk KPI itu.",
+        "Setiap anggota mengisi barisnya sendiri: kontribusi saya, dan cara mengukurnya."
+      ],
+      "panel": [["HASIL", "Satu Kartu KPI unit, lengkap dengan kontribusi setiap anggota."], ["DEBRIEF", "Elemen mana yang tidak diketahui siapa pun di kelompok?"]]
+    },
+    {
+      "id": "s3_tracker", "label": "Tracker", "group": "Sesi 3 · KPI Unit", "scope": "group",
+      "slide": 53, "slideId": "latihan-analisis", "time": "14.20",
+      "kicker": "LATIHAN SESI 3 · 12 MENIT",
+      "title": "Baca tren KPI unit Anda",
+      "steps": [
+        "Buka lembar Tracker. KPI dari Kartu KPI sudah tercantum.",
+        "Isi target dan realisasi untuk bulan-bulan yang sudah berjalan tahun ini. Persen saja cukup.",
+        "Status hijau, kuning, atau merah terisi otomatis. Baca arah trennya.",
+        "Untuk bulan terakhir yang tidak hijau, tentukan sumber gap: input, proses, atau kapabilitas."
+      ],
+      "panel": [["HASIL", "Tracker satu KPI unit dan dugaan sumber gap terbesarnya."], ["DEBRIEF", "Berapa kelompok yang menemukan sumber gap di proses, bukan di orang?"]]
+    },
+    {
+      "id": "s3_perbaikan", "label": "Rencana perbaikan", "group": "Sesi 3 · KPI Unit", "scope": "group",
+      "slide": 57, "slideId": "latihan-perbaikan", "time": "14.45",
+      "kicker": "LATIHAN SESI 3 · 15 MENIT",
+      "title": "Satu rencana perbaikan untuk KPI unit",
+      "steps": [
+        "Daftar ide perbaikan di workbook, nilai dampak dan kendalinya, lalu pilih satu dari “Kerjakan sekarang”.",
+        "Isi rencana perbaikan satu halaman, keenam barisnya.",
+        "Setiap anggota mengisi barisnya: apa kontribusi saya dalam rencana ini?",
+        "Tulis laporan tiga kalimatnya. Ini penutup bahan pleno kelompok."
+      ],
+      "panel": [["HASIL", "Rencana perbaikan dan laporan tiga kalimat, siap dibawa ke pleno."], ["BAHAN PLENO SUDAH LENGKAP", "Strategy map, Kartu KPI unit, tracker, dan rencana perbaikan."]]
+    },
+    {
+      "id": "pleno", "label": "Pleno kelompok", "group": "Penutup", "scope": "group",
+      "slide": 59, "slideId": "pleno", "time": "15.15",
+      "kicker": "PLENO · 15.15 – 16.00",
+      "title": "Satu halaman, satu cerita",
+      "points": [
+        "Grand strategy: kuadran pilihan dan alasannya",
+        "Strategy map: sasaran yang digerakkan unit kami",
+        "KPI unit: Kartu KPI dan kontribusi anggota",
+        "Status: arah tren dan sumber gap",
+        "Perbaikan: satu tuas dan laporan tiga kalimat"
+      ],
+      "prompt": "Halaman ini tersusun otomatis dari lembar kelompok. Fasilitator menampilkannya di layar saat giliran kelompok Anda."
+    },
+    {
+      "id": "komitmen", "label": "Komitmen 30 hari", "group": "Penutup", "scope": "personal",
+      "slide": 60, "slideId": "komitmen", "time": "15.55",
+      "kicker": "PLENO · PENUTUP",
+      "title": "Komitmen 30 hari",
+      "weeks": [
+        "Lengkapi tracker KPI unit bersama tim, dari sumber datanya.",
+        "Diskusikan strategy map dan Kartu KPI unit dengan atasan.",
+        "Jalankan satu tuas dari rencana perbaikan.",
+        "Laporkan hasilnya dengan format tiga kalimat."
+      ],
+      "prompt": "Tulis langkah Anda untuk setiap minggu di workbook. Buka lagi lewat tautan pribadi Anda dan centang minggu yang sudah selesai."
+    },
+    {
+      "id": "posttest", "label": "Post-test", "group": "Penutup", "scope": "personal",
+      "slide": 61, "slideId": "posttest", "time": "16.00",
+      "kicker": "EVALUASI · 16.00 – 16.30",
+      "title": "Post-test dan evaluasi pelatihan",
+      "points": [
+        "Post-test, 10 menit. Soal yang sama dengan pre-test pagi tadi, dijawab sendiri.",
+        "Selisih nilai pre-test dan post-test menjadi ukuran Level 2 di laporan pelatihan.",
+        "Evaluasi Level 1, 10 menit: materi, fasilitator, dan penyelenggaraan."
+      ]
+    },
+    {
+      "id": "evaluasi", "label": "Evaluasi", "group": "Penutup", "scope": "personal",
+      "slide": 61, "slideId": "posttest", "time": "16.15",
+      "kicker": "EVALUASI · 16.00 – 16.30",
+      "title": "Evaluasi Level 1",
+      "intro": "Nilai materi, fasilitator, dan penyelenggaraan: 1 = sangat tidak setuju, 5 = sangat setuju."
+    },
+    {
+      "id": "ringkasan", "label": "Ringkasan saya", "group": "Penutup", "scope": "personal",
+      "slide": null, "time": "",
+      "kicker": "RINGKASAN",
+      "title": "Workbook saya",
+      "intro": "Isian pribadi dan lembar kelompok Anda dalam satu halaman. Cetak atau simpan sebagai PDF untuk dibawa ke diskusi dengan atasan."
+    }
+  ]
+}

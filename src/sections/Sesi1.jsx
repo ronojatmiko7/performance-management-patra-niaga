@@ -1,95 +1,71 @@
-import { useSection, arr } from '../store.jsx'
+import { useSection, useGroup, arr } from '../store.jsx'
 import { Sheet, Block, Field, Text, Area, Choice, Note } from '../ui.jsx'
-import { PERSPECTIVES } from '../data.js'
+import { PERSPECTIVES, KATEGORI, SHEET } from '../data.js'
+import { GroupTag, PersonalTag, Star } from './common.jsx'
 
-const KATEGORI = [
-  { value: 'finansial', label: 'Keuangan & biaya' },
-  { value: 'pelanggan', label: 'Pelanggan & pasar' },
-  { value: 'proses', label: 'Proses & operasional' },
-  { value: 'pembelajaran', label: 'Orang, sistem & budaya' },
-  { value: 'lainnya', label: 'Lainnya' },
-]
+const emptyCh = () => ({ teks: '', terpilih: false, kategori: '' })
 
-function ChallengeList({ data, set, field, title, hint }) {
-  const items = arr(data, field, 3, () => ({ teks: '', kategori: '' }))
-  const put = (i, patch) => set((d) => {
-    const a = arr(d, field, 3, () => ({ teks: '', kategori: '' }))
+export function Tantangan() {
+  const c = SHEET.s1_tantangan
+  const [data, set] = useSection('s1_tantangan')
+  const put = (field, i, patch) => set((d) => {
+    const a = arr(d, field, 3, emptyCh)
     a[i] = { ...a[i], ...patch }
     return { ...d, [field]: a }
   })
+  const cols = [['perusahaan', 'Perusahaan'], ['pekerjaan', 'Pekerjaan saya']]
+  const filled = cols.flatMap(([f, l]) => arr(data, f, 3, emptyCh).map((x, i) => ({ ...x, f, i, l })).filter((x) => x.teks.trim()))
   return (
-    <Block title={title} hint={hint}>
-      <div className="stack">
-        {items.map((it, i) => (
-          <div className="row-card" key={i}>
-            <span className="num">{i + 1}</span>
-            <div className="grow stack-sm">
-              <Area value={it.teks} onChange={(v) => put(i, { teks: v })} placeholder="Tulis satu tantangan, sekonkret mungkin" />
-              <Choice small options={KATEGORI} value={it.kategori} onChange={(v) => put(i, { kategori: v })} />
+    <Sheet c={c} scopeLine={<PersonalTag />}>
+      <div className="grid-2">
+        {cols.map(([field, label]) => (
+          <Block key={field} title={label}>
+            <div className="stack">
+              {arr(data, field, 3, emptyCh).map((it, i) => (
+                <div className="row-card" key={i}>
+                  <span className="num">{i + 1}</span>
+                  <div className="grow"><Area value={it.teks} onChange={(v) => put(field, i, { teks: v })} placeholder="Satu tantangan, sekonkret mungkin" /></div>
+                  <Star on={it.terpilih} title="Terpilih sebagai tiga terbesar di meja" onClick={() => put(field, i, { terpilih: !it.terpilih })} />
+                </div>
+              ))}
             </div>
-          </div>
+          </Block>
         ))}
       </div>
-    </Block>
-  )
-}
-
-export function Tantangan() {
-  const [data, set] = useSection('s1_tantangan')
-  return (
-    <Sheet
-      kicker="Sesi 1 · Diskusi kelompok · 15 menit"
-      title="Tantangan apa yang sedang Anda hadapi?"
-      intro="Apa tantangan yang sedang dihadapi oleh perusahaan Anda secara umum, dan pekerjaan Anda secara khusus?"
-      steps={[
-        'Tulis tantangan Anda sendiri dulu, satu tantangan per baris.',
-        'Pilih tiga yang terbesar di tiap kolom untuk dibawa ke pleno.',
-        'Saat pleno, tandai kotak mana yang paling cocok untuk setiap tantangan.',
-      ]}
-    >
-      <div className="grid-2">
-        <ChallengeList data={data} set={set} field="perusahaan" title="Perusahaan saya" hint="Tantangan anak perusahaan secara umum" />
-        <ChallengeList data={data} set={set} field="pekerjaan" title="Pekerjaan saya" hint="Tantangan di meja kerja Anda sendiri" />
-      </div>
-      <Block title="Catatan pleno" hint="Pola apa yang muncul ketika semua tantangan ditempel di dinding?">
-        <Area value={data.pola} onChange={(v) => set({ pola: v })} placeholder="Misalnya: banyak tantangan di Proses, sedikit di Pelanggan" rows={3} />
+      <Block tone="tint" title={`Pleno · Slide ${c.pleno.slide}`} hint={c.pleno.text}>
+        {!filled.length && <p className="muted small">Tulis tantangan Anda di atas dulu.</p>}
+        <div className="stack">
+          {filled.map((x) => (
+            <div key={`${x.f}${x.i}`} className="pleno-row">
+              <p>{x.terpilih && <b className="gold">★ </b>}{x.teks} <span className="muted small">· {x.l}</span></p>
+              <Choice small options={KATEGORI} value={x.kategori} onChange={(v) => put(x.f, x.i, { kategori: v })} />
+            </div>
+          ))}
+        </div>
       </Block>
     </Sheet>
   )
 }
 
 export function Customer() {
-  const [data, set] = useSection('s1_customer')
+  const c = SHEET.s1_customer
+  const [data, set] = useGroup('s1_customer')
   const rows = arr(data, 'rows', 3, () => ({ customer: '', kebutuhan: '', cara: '' }))
-  const put = (i, k, v) => set((d) => {
-    const a = arr(d, 'rows', 3, () => ({ customer: '', kebutuhan: '', cara: '' }))
-    a[i] = { ...a[i], [k]: v }
-    return { ...d, rows: a }
-  })
   return (
-    <Sheet
-      kicker="Sesi 1 · Diskusi kelompok + pleno · 20 menit"
-      title="Siapa customer Anda, dan apa yang Anda selesaikan?"
-      intro="Bisnis adalah kendaraan untuk meraih keuntungan, dengan cara memenuhi kebutuhan atau menyelesaikan permasalahan customer."
-      steps={[
-        'Berkumpul per anak perusahaan.',
-        'Isi tabel ini untuk maksimal tiga customer utama.',
-        'Satu juru bicara, dua menit di pleno.',
-      ]}
-    >
-      <Note>
-        <b>Contoh, SPBU:</b> customer-nya pengendara pribadi dan armada niaga · kebutuhannya BBM selalu tersedia,
-        layanan cepat, takaran tepat · cara memenuhinya jaringan SPBU, standar layanan, pembayaran non-tunai.
-      </Note>
-      <div className="table-cards">
+    <Sheet c={c} scopeLine={<GroupTag section="s1_customer" />}>
+      <div className="cust">
+        <div className="cust-head"><span>Siapa customer-nya?</span><span>Kebutuhan atau masalah mereka</span><span>Cara kami memenuhinya</span></div>
+        <div className="cust-row example">
+          <p>Contoh SPBU: pengendara pribadi dan armada niaga</p>
+          <p>BBM selalu tersedia, layanan cepat, takaran tepat</p>
+          <p>Jaringan SPBU, standar layanan, pembayaran non-tunai</p>
+        </div>
         {rows.map((r, i) => (
-          <Block key={i} title={`Customer ${i + 1}`}>
-            <div className="grid-3">
-              <Field label="Siapa customer-nya?"><Area value={r.customer} onChange={(v) => put(i, 'customer', v)} /></Field>
-              <Field label="Kebutuhan atau masalah mereka"><Area value={r.kebutuhan} onChange={(v) => put(i, 'kebutuhan', v)} /></Field>
-              <Field label="Cara kami memenuhinya"><Area value={r.cara} onChange={(v) => put(i, 'cara', v)} /></Field>
-            </div>
-          </Block>
+          <div className="cust-row" key={i}>
+            <Area value={r.customer} onChange={(v) => set(`rows.${i}.customer`, v)} placeholder={`Customer ${i + 1}`} aria-label="Siapa customer-nya" />
+            <Area value={r.kebutuhan} onChange={(v) => set(`rows.${i}.kebutuhan`, v)} aria-label="Kebutuhan atau masalah mereka" />
+            <Area value={r.cara} onChange={(v) => set(`rows.${i}.cara`, v)} aria-label="Cara kami memenuhinya" />
+          </div>
         ))}
       </div>
     </Sheet>
@@ -97,27 +73,19 @@ export function Customer() {
 }
 
 export function Refleksi() {
+  const c = SHEET.s1_refleksi
   const [data, set] = useSection('s1_refleksi')
   return (
-    <Sheet
-      kicker="Sesi 1 · Rangkuman"
-      title="Kembali ke Why"
-      intro="Bisnis ada untuk meraih keuntungan dengan cara memenuhi kebutuhan customer. Balanced Scorecard menjaga kedua hasil itu lewat proses inti serta learning and growth. OKR mempercepat perbaikan di titik yang paling lemah."
-    >
-      <Block title="Di perspektif mana pekerjaan Anda paling banyak berkontribusi?">
+    <Sheet c={c} scopeLine={<PersonalTag />}>
+      <Block>
         <Field label="Perspektif" group>
           <Choice options={PERSPECTIVES.map((p) => ({ value: p.key, label: p.label }))} value={data.perspektif} onChange={(v) => set({ perspektif: v })} />
         </Field>
-        <Field label="Contoh nyata dari pekerjaan Anda" wide>
-          <Area value={data.alasan} onChange={(v) => set({ alasan: v })} placeholder="Apa yang Anda kerjakan, dan bagaimana itu menggerakkan perspektif tersebut?" rows={3} />
+        <Field label="Contohnya dari pekerjaan Anda" wide>
+          <Area value={data.alasan} onChange={(v) => set({ alasan: v })} rows={2} />
         </Field>
       </Block>
-      <Block title="Satu ide OKR (opsional)" hint="Bila unit Anda boleh memilih satu terobosan untuk kuartal depan, apa itu?">
-        <div className="grid-2">
-          <Field label="Objective"><Area value={data.okr_objective} onChange={(v) => set({ okr_objective: v })} placeholder="Kalimat kualitatif yang memotivasi" /></Field>
-          <Field label="Key result"><Area value={data.okr_kr} onChange={(v) => set({ okr_kr: v })} placeholder="Angka yang membuktikan objective tercapai" /></Field>
-        </div>
-      </Block>
+      {data.perspektif && <Note tone="muted">Jawaban ini dipakai lagi di Sesi 3, saat Anda membedah KPI unit.</Note>}
     </Sheet>
   )
 }

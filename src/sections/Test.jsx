@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { api } from '../api.js'
 import { useWorkbook } from '../store.jsx'
 import { Sheet, Note } from '../ui.jsx'
+import { SHEET } from '../data.js'
+import { PersonalTag } from './common.jsx'
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E']
 
@@ -52,14 +54,12 @@ export default function Test({ kind, questions, config, refreshConfig }) {
     }
   }
 
+  const c = isPost ? SHEET.posttest : SHEET.pretest
   const title = isPost ? 'Post-test' : 'Pre-test'
-  const intro = isPost
-    ? 'Soal yang sama dengan pre-test pagi tadi. Jawab sendiri. Selisih nilai pre-test dan post-test menjadi ukuran Level 2 di laporan pelatihan.'
-    : 'Sepuluh soal pilihan ganda, sekitar 10 menit. Jawab sendiri, tanpa membuka bahan. Belum tahu jawabannya? Tidak apa-apa: inilah titik awal Anda.'
 
   if (closed) {
     return (
-      <Sheet kicker="Evaluasi Level 2" title={title} intro={intro}>
+      <Sheet c={c} scopeLine={<PersonalTag />}>
         <Note tone="muted">Post-test akan dibuka oleh fasilitator pukul 16.00. Halaman ini memeriksa ulang secara otomatis.</Note>
         <button type="button" className="btn" onClick={refreshConfig}>Periksa sekarang</button>
       </Sheet>
@@ -70,7 +70,7 @@ export default function Test({ kind, questions, config, refreshConfig }) {
     const pre = tests.pre
     const shownAnswers = done.answers || answers
     return (
-      <Sheet kicker="Evaluasi Level 2" title={title}>
+      <Sheet c={{ ...c, points: undefined }} scopeLine={<PersonalTag />}>
         <div className="score">
           <div><span className="score-num">{done.score}</span><span className="score-of">/ {done.total}</span></div>
           <p>{isPost ? 'Nilai post-test Anda.' : 'Nilai pre-test Anda. Kita bandingkan dengan post-test sore nanti.'}</p>
@@ -98,7 +98,7 @@ export default function Test({ kind, questions, config, refreshConfig }) {
   }
 
   return (
-    <Sheet kicker="Evaluasi Level 2" title={title} intro={intro}>
+    <Sheet c={c} scopeLine={<PersonalTag />}>
       <ol className="questions">
         {questions.map((q) => (
           <li key={q.no} className="question">

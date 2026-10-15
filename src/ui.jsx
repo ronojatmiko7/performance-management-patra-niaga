@@ -1,27 +1,50 @@
 import { useEffect, useLayoutEffect, useRef } from 'react'
 
-export function Sheet({ kicker, title, intro, steps, result, children }) {
+/**
+ * Kepala lembar kerja. Teksnya diambil dari content.json, sama persis dengan slide.
+ * `c` = entri content.json; `scopeLine` = keterangan lembar kelompok/pribadi.
+ */
+export function Sheet({ c, kicker, title, intro, steps, result, scopeLine, children }) {
+  const k = c?.kicker ?? kicker
+  const t = c?.title ?? title
+  const st = c?.steps ?? steps
+  const panel = c?.panel ?? (result ? [['HASIL', result]] : null)
   return (
     <article className="sheet">
       <header className="sheet-head">
-        {kicker && <p className="kicker">{kicker}</p>}
-        <h1>{title}</h1>
-        {intro && <p className="intro">{intro}</p>}
-        {(steps || result) && (
-          <div className="brief">
-            {steps && (
+        <div className="head-tags">
+          {k && <p className="kicker">{k}</p>}
+          {c?.slide && <p className="slide-tag">Slide {c.slide}</p>}
+          {scopeLine}
+        </div>
+        <h1>{t}</h1>
+        {c?.question && <blockquote className="question-box">“{c.question}”</blockquote>}
+        {(c?.intro ?? intro) && <p className="intro">{c?.intro ?? intro}</p>}
+        {c?.points && (
+          <ol className="steps steps-plain">
+            {c.points.map((s, i) => <li key={i}><span>{i + 1}</span><p>{s}</p></li>)}
+          </ol>
+        )}
+        {(st || panel) && (
+          <div className={`brief ${panel ? '' : 'brief-solo'}`}>
+            {st && (
               <ol className="steps">
-                {steps.map((s, i) => <li key={i}><span>{i + 1}</span><p>{s}</p></li>)}
+                {st.map((s, i) => <li key={i}><span>{i + 1}</span><p>{s}</p></li>)}
               </ol>
             )}
-            {result && (
+            {panel && (
               <div className="result">
-                <p className="label">Hasil</p>
-                <p>{result}</p>
+                {panel.map(([label, text], i) => (
+                  <div key={i} className="result-item">
+                    <p className="label">{label}</p>
+                    <p>{text}</p>
+                  </div>
+                ))}
               </div>
             )}
           </div>
         )}
+        {c?.prompt && <div className="prompt">{c.prompt}</div>}
       </header>
       <div className="sheet-body">{children}</div>
     </article>

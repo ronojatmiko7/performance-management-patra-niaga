@@ -31,6 +31,9 @@ export const api = {
   state: (s) => rpc('pmf_get_state', { p_id: s.id, p_token: s.token }),
   save: (s, section, data) =>
     rpc('pmf_save_section', { p_id: s.id, p_token: s.token, p_section: section, p_data: data }),
+  group: (s) => rpc('pmf_get_group', { p_id: s.id, p_token: s.token }),
+  saveGroup: (s, section, patch) =>
+    rpc('pmf_save_group', { p_id: s.id, p_token: s.token, p_section: section, p_patch: patch }),
   submitTest: (s, kind, answers) =>
     rpc('pmf_submit_test', { p_id: s.id, p_token: s.token, p_kind: kind, p_answers: answers }),
   submitEval: (s, ratings, best, improve) =>
