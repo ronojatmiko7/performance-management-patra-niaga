@@ -23,10 +23,10 @@ Ada dua jenis lembar:
 | Bagian | Lembar |
 |---|---|
 | Pembuka | Pre-test (10 soal, dinilai di server) |
-| Sesi 1 · Start With Why | Tantangan kita · Customer & kebutuhannya · Refleksi (perspektif BSC, ide OKR) |
+| Sesi 1 · Start With Why | Tantangan kita (+ pleno peta tantangan) · Customer · Refleksi Sesi 1 |
 | Sesi 2 · Strategi | SWOT dengan bukti · Kuadran & grand strategy · Cek RKAP · Strategy map 4 perspektif + panah sebab-akibat |
 | Sesi 3 · KPI Unit | Kartu KPI unit (8 elemen, cascading, lead indicator, kontribusi anggota) · Tracker bulanan dengan status hijau/kuning/merah otomatis sesuai polaritas · Rencana perbaikan + laporan tiga kalimat |
-| Penutup | Komitmen 30 hari · Post-test (dibuka fasilitator) · Evaluasi Level 1 · Ringkasan yang bisa dicetak/PDF |
+| Penutup | Pleno kelompok (satu halaman, satu cerita) · Komitmen 30 hari · Post-test (dibuka fasilitator) · Evaluasi Level 1 · Ringkasan yang bisa dicetak/PDF |
 
 ## Alamat
 
