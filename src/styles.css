@@ -530,3 +530,9 @@ button.tag.pick.on { background: var(--green); color: #fff; }
   .sum-table { display: block; overflow-x: auto; }
   .map-gs { flex-direction: column; gap: 4px; }
 }
+
+.download-card { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; background: var(--navy); color: #fff; border-radius: var(--radius); padding: 18px 20px; margin-top: 8px; }
+.download-card b { font-family: var(--serif); font-size: 20px; }
+.download-card p { color: var(--navy-label); font-size: 15px; max-width: 620px; }
+.download-card .btn { background: var(--gold); color: var(--ink); }
+.download-card .btn:hover { background: #b38f1f; }

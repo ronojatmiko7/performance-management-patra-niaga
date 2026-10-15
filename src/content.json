@@ -334,7 +334,13 @@
       "time": "",
       "kicker": "RINGKASAN",
       "title": "Workbook saya",
-      "intro": "Isian pribadi dan lembar kelompok Anda dalam satu halaman. Cetak atau simpan sebagai PDF untuk dibawa ke diskusi dengan atasan."
+      "intro": "Isian pribadi dan lembar kelompok Anda dalam satu halaman. Cetak atau simpan sebagai PDF untuk dibawa ke diskusi dengan atasan.",
+      "download": {
+        "title": "Materi pelatihan",
+        "desc": "Slide Performance Management Fundamental dalam format PDF (1,1 MB). Simpan untuk dibaca ulang dan dibagikan ke tim Anda.",
+        "label": "Unduh materi (PDF)",
+        "url": "https://drive.google.com/file/d/1iiD6c9ggaNEo8ph4Z-93pTsNzdst5S7i/view?usp=drive_link"
+      }
     }
   ]
 }

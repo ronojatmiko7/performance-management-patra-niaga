@@ -233,6 +233,15 @@ function Workbook({ route, onLogout }) {
           <h1>{SHEET.ringkasan.title}</h1>
           <p className="intro">{SHEET.ringkasan.intro}</p>
           <button className="btn" onClick={() => window.print()}>Cetak / simpan PDF</button>
+          {SHEET.ringkasan.download && (
+            <div className="download-card">
+              <div>
+                <b>{SHEET.ringkasan.download.title}</b>
+                <p>{SHEET.ringkasan.download.desc}</p>
+              </div>
+              <a className="btn" href={SHEET.ringkasan.download.url} target="_blank" rel="noopener noreferrer">{SHEET.ringkasan.download.label}</a>
+            </div>
+          )}
         </header>
         <Summary
           responses={responses} participant={participant} tests={tests}
