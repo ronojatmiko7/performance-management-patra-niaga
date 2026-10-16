@@ -271,7 +271,6 @@ function Workbook({ route, onLogout }) {
             <span>{participant.company}{participant.unit ? ` · ${participant.unit}` : ''}</span>
             <div className="progress"><i style={{ width: `${(doneCount / total) * 100}%` }} /></div>
             <span className="small">{doneCount} dari {total} lembar terisi</span>
-            <span className="small legend"><b className="grp">K</b> lembar kelompok, diisi bersama</span>
           </div>
           {NAV.map((g) => (
             <div key={g.group} className="nav-group">
@@ -279,7 +278,7 @@ function Workbook({ route, onLogout }) {
               {g.items.map((it) => (
                 <a key={it.id} href={`#/${it.id}`} className={`${current === it.id ? 'active' : ''} ${done[it.id] ? 'done' : ''}`}>
                   <i className="dot" />
-                  <span className="grow">{it.label}{it.scope === 'group' && <b className="grp" title="Lembar kelompok">K</b>}</span>
+                  <span className="grow">{it.label}</span>
                   {it.id === 'posttest' && !config.post_open && !tests.post ? <em>terkunci</em> : <em>{it.time}</em>}
                 </a>
               ))}

@@ -87,3 +87,7 @@ grant execute on function
   public.pmf_save_group(uuid, uuid, text, jsonb),
   public.pmf_get_group(uuid, uuid)
 to anon, authenticated;
+
+-- 2026-10-16: lembar latihan kini milik masing-masing peserta.
+-- Kunci group_responses.company = 'p:<participant_id>' (migrasi pmf_patra_personal_sheets).
+-- Isi lembar bersama lama disalin ke setiap anggotanya; baris lama (company tanpa 'p:') tidak dipakai lagi.
