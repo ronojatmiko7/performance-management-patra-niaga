@@ -56,15 +56,18 @@ export const EVAL_ITEMS = EVAL_GROUPS.flatMap((g) => g.items)
 
 export const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des']
 
-export const SHEETS = content.sheets
+/** Semua lembar, termasuk yang disembunyikan (hidden: true) dari alur batch berjalan. */
 export const SHEET = Object.fromEntries(content.sheets.map((s) => [s.id, s]))
-export const GROUP_SECTIONS = content.sheets.filter((s) => s.scope === 'group' && s.id !== 'pleno').map((s) => s.id)
+/** Lembar yang tampil di workbook. Lembar tersembunyi tetap ada di SHEET agar data lama terbaca. */
+export const SHEETS = content.sheets.filter((s) => !s.hidden)
+export const isShown = (id) => !!SHEET[id] && !SHEET[id].hidden
+export const GROUP_SECTIONS = SHEETS.filter((s) => s.scope === 'group' && s.id !== 'pleno').map((s) => s.id)
 
-export const NAV = content.sheets.reduce((acc, s) => {
+export const NAV = SHEETS.reduce((acc, s) => {
   let g = acc.find((x) => x.group === s.group)
   if (!g) { g = { group: s.group, items: [] }; acc.push(g) }
   g.items.push({ id: s.id, label: s.label, time: s.time, scope: s.scope, slide: s.slide })
   return acc
 }, [])
 
-export const SECTION_IDS = content.sheets.map((s) => s.id)
+export const SECTION_IDS = SHEETS.map((s) => s.id)

@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { api } from './api.js'
 import Shell from './Shell.jsx'
 import { Note } from './ui.jsx'
-import { EVAL_GROUPS, EVAL_ITEMS, KATEGORI, GROUP_SECTIONS, SHEET } from './data.js'
+import { EVAL_GROUPS, EVAL_ITEMS, KATEGORI, GROUP_SECTIONS, SHEET, isShown } from './data.js'
 import { unflatten } from './store.jsx'
 import Summary from './sections/Summary.jsx'
 import { PlenoView } from './sections/Pleno.jsx'
@@ -11,7 +11,7 @@ import { QuadrantGrid, quadrantOf } from './sections/Sesi2.jsx'
 const PIN_KEY = 'pmf_patra_pin'
 const avg = (xs) => (xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : null)
 const f1 = (n) => (n == null ? '–' : n.toLocaleString('id-ID', { maximumFractionDigits: 1 }))
-const PERSONAL_SECTIONS = ['s1_tantangan', 's1_refleksi', 'komitmen']
+const PERSONAL_SECTIONS = ['s1_tantangan', 's1_refleksi', 'komitmen'].filter(isShown)
 
 function filled(v) {
   if (v == null) return false
@@ -35,13 +35,14 @@ function download(name, content, type) {
   setTimeout(() => URL.revokeObjectURL(a.href), 1000)
 }
 
+// Tab papan kelas hanya tampil bila lembarnya dipakai di batch berjalan.
 const TABS = [
   ['peserta', 'Peserta'],
-  ['tantangan', `Peta tantangan · slide ${SHEET.s1_tantangan.pleno.slide}`],
-  ['kuadran', `Matriks kuadran · slide ${SHEET.s2_kuadran.slide}`],
-  ['pleno', `Pleno · slide ${SHEET.pleno.slide}`],
+  isShown('s1_tantangan') && ['tantangan', `Peta tantangan · slide ${SHEET.s1_tantangan.pleno.slide}`],
+  isShown('s2_kuadran') && ['kuadran', `Matriks kuadran · slide ${SHEET.s2_kuadran.slide}`],
+  isShown('pleno') && ['pleno', `Pleno · slide ${SHEET.pleno.slide}`],
   ['evaluasi', 'Evaluasi L1'],
-]
+].filter(Boolean)
 
 export default function Facilitator() {
   const [pin, setPin] = useState(() => { try { return sessionStorage.getItem(PIN_KEY) || '' } catch { return '' } })

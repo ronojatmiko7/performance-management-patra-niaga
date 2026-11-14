@@ -89,7 +89,7 @@ function Participant({ route }) {
 
 function Register({ onDone }) {
   const params = new URLSearchParams(window.location.search)
-  const batch = (params.get('batch') || 'batch-1').slice(0, 40)
+  const batch = (params.get('batch') || 'batch-2').slice(0, 40)
   const [name, setName] = useState('')
   const [company, setCompany] = useState('')
   const [other, setOther] = useState('')
@@ -182,7 +182,7 @@ function Workbook({ route, onLogout }) {
   const [config, setConfig] = useState({ post_open: false })
   const [menuOpen, setMenuOpen] = useState(false)
   const [linkOpen, setLinkOpen] = useState(false)
-  const current = SECTION_IDS.includes(route) ? route : (tests.pre ? 's1_tantangan' : 'pretest')
+  const current = SECTION_IDS.includes(route) ? route : (tests.pre ? SECTION_IDS[1] : 'pretest')
   useScrollTop(current)
 
   const refreshConfig = useCallback(() => { api.config().then(setConfig).catch(() => {}) }, [])

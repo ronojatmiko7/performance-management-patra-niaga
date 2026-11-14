@@ -7,10 +7,10 @@
       "label": "Pre-test",
       "group": "Pembuka",
       "scope": "personal",
-      "slide": 3,
+      "slide": 2,
       "slideId": "pretest",
-      "time": "08.00",
-      "kicker": "SESI 1 · PRE-TEST · 10 MENIT",
+      "time": "08.45",
+      "kicker": "PEMBUKA · PRE-TEST · 10 MENIT",
       "title": "Pre-test: potret awal pemahaman Anda",
       "points": [
         "Pindai QR, lalu isi nama, anak perusahaan, dan unit kerja. Workbook langsung membuka pre-test.",
@@ -41,7 +41,8 @@
         "kicker": "SESI 1 · PLENO · 15 MENIT",
         "title": "Memetakan tantangan kita bersama",
         "text": "Tempel tantangan Anda di kotak yang paling cocok, lalu pilih kotak yang sama di workbook. Tidak cocok di empat kotak? Tempel di “Lainnya”."
-      }
+      },
+      "hidden": true
     },
     {
       "id": "s1_customer",
@@ -57,7 +58,8 @@
         "Berkumpul per anak perusahaan.",
         "Isi tabel ini di flipchart untuk maksimal tiga customer utama. Juru tulis menyalinnya ke workbook.",
         "Satu juru bicara, dua menit di pleno."
-      ]
+      ],
+      "hidden": true
     },
     {
       "id": "s1_refleksi",
@@ -74,7 +76,8 @@
         "Balanced Scorecard menjaga kedua hasil itu lewat proses inti serta learning and growth.",
         "OKR mempercepat perbaikan di titik yang paling lemah, kuartal demi kuartal."
       ],
-      "prompt": "Sebelum rehat, tulis di sticky note dan di workbook: di perspektif mana pekerjaan Anda paling banyak berkontribusi, dan apa contohnya?"
+      "prompt": "Sebelum rehat, tulis di sticky note dan di workbook: di perspektif mana pekerjaan Anda paling banyak berkontribusi, dan apa contohnya?",
+      "hidden": true
     },
     {
       "id": "s2_swot",
@@ -101,7 +104,8 @@
           "DEBRIEF",
           "Kotak mana yang paling sulit diisi? Mengapa?"
         ]
-      ]
+      ],
+      "hidden": true
     },
     {
       "id": "s2_kuadran",
@@ -128,7 +132,8 @@
           "CATATAN",
           "Ini hipotesis kelompok untuk belajar, bukan penilaian resmi atas perusahaan."
         ]
-      ]
+      ],
+      "hidden": true
     },
     {
       "id": "s2_rkap",
@@ -145,7 +150,8 @@
         "Tulis 3–5 target atau program utama di RKAP perusahaan Anda di workbook.",
         "Tandai setiap target: sejalan atau tidak dengan grand strategy kelompok?",
         "Banyak yang tidak sejalan? Diskusikan: kuadran kita yang keliru, atau ada yang belum kita lihat?"
-      ]
+      ],
+      "hidden": true
     },
     {
       "id": "s2_peta",
@@ -177,86 +183,87 @@
         "slide": 36,
         "slideId": "implikasi",
         "text": "Sebelum ISHOMA: lingkari satu sasaran di strategy map kelompok yang paling digerakkan oleh unit Anda, dan tandai ★ di workbook. Sesi 3 dimulai dari sana."
-      }
+      },
+      "hidden": true
     },
     {
       "id": "s3_kartu",
       "label": "Kartu KPI",
-      "group": "Sesi 3 · KPI Unit",
+      "group": "Sesi 2 · Bedah KPI Unit",
       "scope": "group",
-      "slide": 48,
+      "slide": 32,
       "slideId": "latihan-kartu",
-      "time": "14.00",
-      "kicker": "LATIHAN SESI 3 · 12 MENIT",
-      "title": "Bedah KPI unit Anda",
+      "time": "11.10",
+      "kicker": "LATIHAN SESI 2 · 40 MENIT",
+      "title": "Bedah KPI unit Anda sendiri",
       "steps": [
-        "Buka lembar Kartu KPI. Pilih satu KPI unit dengan bobot terbesar.",
-        "Isi delapan elemen, plus sasaran di strategy map yang didukung.",
-        "Tambahkan satu lead indicator untuk KPI itu.",
-        "Setiap anggota mengisi barisnya sendiri: kontribusi saya, dan cara mengukurnya."
+        "Buka lembar Kartu KPI. Pilih KPI unit Anda dengan bobot terbesar, lalu isi delapan elemennya.",
+        "Tambahkan sasaran yang didukung di strategy map, satu lead indicator, dan kontribusi Anda.",
+        "Tulis nama KPI dan targetnya di sticky note besar. Tempel di flipchart kelompok.",
+        "Bergiliran 4 menit per orang: bacakan kartu Anda. Rekan menempel masukan memakai uji SMART."
       ],
       "panel": [
         [
-          "HASIL",
-          "Satu Kartu KPI unit, lengkap dengan kontribusi setiap anggota."
+          "UJI SMART",
+          "Specific: satu hal yang jelas diukur. Measurable: ada formula dan sumber data. Achievable: target masuk akal. Relevant: tertempel di strategy map. Time-bound: periodenya jelas."
         ],
         [
-          "DEBRIEF",
-          "Elemen mana yang tidak diketahui siapa pun di kelompok?"
+          "HASIL",
+          "Kartu KPI unit Anda, sudah dikoreksi kelompok."
         ]
       ]
     },
     {
       "id": "s3_tracker",
       "label": "Tracker",
-      "group": "Sesi 3 · KPI Unit",
+      "group": "Sesi 3 · Perbaikan Kinerja",
       "scope": "group",
-      "slide": 53,
+      "slide": 38,
       "slideId": "latihan-analisis",
-      "time": "14.20",
-      "kicker": "LATIHAN SESI 3 · 12 MENIT",
-      "title": "Baca tren KPI unit Anda",
+      "time": "13.15",
+      "kicker": "LATIHAN SESI 3 · 20 MENIT",
+      "title": "Papan status KPI kelompok",
       "steps": [
-        "Buka lembar Tracker. KPI dari Kartu KPI sudah tercantum.",
-        "Isi target dan realisasi untuk bulan-bulan yang sudah berjalan tahun ini. Persen saja cukup.",
-        "Status hijau, kuning, atau merah terisi otomatis. Baca arah trennya.",
-        "Untuk bulan terakhir yang tidak hijau, tentukan sumber gap: input, proses, atau kapabilitas."
+        "Buka lembar Tracker. KPI dari Kartu KPI Anda sudah tercantum.",
+        "Isi target dan realisasi bulan atau triwulan yang sudah berjalan. Persen saja cukup. Status terisi otomatis.",
+        "Tulis nama KPI dan capaian terakhirnya di sticky note. Beri tanda hijau, kuning, atau merah.",
+        "Tempel di papan status kelompok, urut dari yang paling merah. Gambar panah ↓ bila trennya turun."
       ],
       "panel": [
         [
           "HASIL",
-          "Tracker satu KPI unit dan dugaan sumber gap terbesarnya."
+          "Semua KPI unit anggota kelompok dalam satu papan status."
         ],
         [
           "DEBRIEF",
-          "Berapa kelompok yang menemukan sumber gap di proses, bukan di orang?"
+          "Berapa KPI yang kuning atau merah? Berapa yang trennya turun walau masih hijau?"
         ]
       ]
     },
     {
       "id": "s3_perbaikan",
       "label": "Rencana perbaikan",
-      "group": "Sesi 3 · KPI Unit",
+      "group": "Sesi 3 · Perbaikan Kinerja",
       "scope": "group",
-      "slide": 57,
+      "slide": 46,
       "slideId": "latihan-perbaikan",
-      "time": "14.45",
+      "time": "14.50",
       "kicker": "LATIHAN SESI 3 · 15 MENIT",
-      "title": "Satu rencana perbaikan untuk KPI unit",
+      "title": "Rencana perbaikan untuk KPI Anda",
       "steps": [
-        "Pilih satu tuas dari kuadran “Kerjakan sekarang”. Juru tulis mencatat semua ide dan penilaiannya di workbook.",
-        "Isi rencana perbaikan satu halaman, keenam barisnya.",
-        "Setiap anggota mengisi barisnya: apa kontribusi saya dalam rencana ini?",
-        "Tulis laporan tiga kalimatnya. Ini penutup bahan pleno kelompok."
+        "Buka lembar Rencana perbaikan. Nama KPI dan lead indicator sudah terbawa dari Kartu KPI.",
+        "KPI Anda dibedah di fishbone? Pakai akar dan tuasnya. Belum? Tanya “kenapa” tiga kali untuk KPI Anda sendiri.",
+        "Isi keenam baris rencana, termasuk bantuan yang Anda butuhkan dari atasan.",
+        "Tulis laporan tiga kalimatnya. Anda memakainya di latihan berikutnya."
       ],
       "panel": [
         [
           "HASIL",
-          "Rencana perbaikan dan laporan tiga kalimat, siap dibawa ke pleno."
+          "Satu rencana perbaikan dan satu laporan tiga kalimat untuk KPI Anda sendiri."
         ],
         [
-          "BAHAN PLENO SUDAH LENGKAP",
-          "Strategy map, Kartu KPI unit, tracker, dan rencana perbaikan."
+          "BERIKUTNYA",
+          "Sampaikan laporan itu kepada “atasan” di latihan berpasangan (slide 47)."
         ]
       ]
     },
@@ -277,21 +284,22 @@
         "Status: arah tren dan sumber gap",
         "Perbaikan: satu tuas dan laporan tiga kalimat"
       ],
-      "prompt": "Halaman ini tersusun otomatis dari lembar kelompok. Fasilitator menampilkannya di layar saat giliran kelompok Anda."
+      "prompt": "Halaman ini tersusun otomatis dari lembar kelompok. Fasilitator menampilkannya di layar saat giliran kelompok Anda.",
+      "hidden": true
     },
     {
       "id": "komitmen",
       "label": "Komitmen 30 hari",
       "group": "Penutup",
       "scope": "personal",
-      "slide": 60,
+      "slide": 49,
       "slideId": "komitmen",
-      "time": "15.55",
-      "kicker": "PLENO · PENUTUP",
+      "time": "15.50",
+      "kicker": "PENUTUP · KOMITMEN",
       "title": "Komitmen 30 hari",
       "weeks": [
         "Lengkapi tracker KPI unit bersama tim, dari sumber datanya.",
-        "Diskusikan strategy map dan Kartu KPI unit dengan atasan.",
+        "Check-in dengan atasan: Kartu KPI dan rencana perbaikan.",
         "Jalankan satu tuas dari rencana perbaikan.",
         "Laporkan hasilnya dengan format tiga kalimat."
       ],
@@ -302,7 +310,7 @@
       "label": "Post-test",
       "group": "Penutup",
       "scope": "personal",
-      "slide": 61,
+      "slide": 50,
       "slideId": "posttest",
       "time": "16.00",
       "kicker": "EVALUASI · 16.00 – 16.30",
@@ -318,7 +326,7 @@
       "label": "Evaluasi",
       "group": "Penutup",
       "scope": "personal",
-      "slide": 61,
+      "slide": 50,
       "slideId": "posttest",
       "time": "16.15",
       "kicker": "EVALUASI · 16.00 – 16.30",
@@ -334,7 +342,7 @@
       "time": "",
       "kicker": "RINGKASAN",
       "title": "Workbook saya",
-      "intro": "Isian pribadi dan lembar kelompok Anda dalam satu halaman. Cetak atau simpan sebagai PDF untuk dibawa ke diskusi dengan atasan.",
+      "intro": "Isian pribadi Anda dalam satu halaman: Kartu KPI, tracker, rencana perbaikan, dan komitmen. Cetak atau simpan sebagai PDF untuk dibawa ke diskusi dengan atasan.",
       "download": {
         "title": "Materi pelatihan",
         "desc": "Slide Performance Management Fundamental dalam format PDF (1,1 MB). Simpan untuk dibaca ulang dan dibagikan ke tim Anda.",

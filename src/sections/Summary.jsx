@@ -1,4 +1,4 @@
-import { PERSPECTIVES, KATEGORI } from '../data.js'
+import { PERSPECTIVES, KATEGORI, isShown } from '../data.js'
 import { arr } from '../store.jsx'
 import { Badge, fmtPct } from '../ui.jsx'
 import { PlenoView } from './Pleno.jsx'
@@ -22,6 +22,7 @@ export default function Summary({ responses = {}, participant, g = {}, members =
   const kat = Object.fromEntries(KATEGORI.map((k) => [k.value, k.label]))
   const persp = Object.fromEntries(PERSPECTIVES.map((p) => [p.key, p.label]))
   const cus = g.s1_customer || {}; const swot = g.s2_swot || {}; const rk = g.s2_rkap || {}
+  const kar = g.s3_kartu || {}; const per = g.s3_perbaikan || {}
   const bulan = trackerRows(g.s3_tracker || {}, g.s3_kartu || {}).filter((b) => has(b.target, b.realisasi, b.catatan))
 
   return (
@@ -60,8 +61,20 @@ export default function Summary({ responses = {}, participant, g = {}, members =
       </section>
 
       <section className="sum-sec">
-        <h3>Lembar kelompok{company ? ` · ${company}` : ''}</h3>
-        <PlenoView g={g} members={members} />
+        <h3>{isShown('pleno') ? 'Lembar kelompok' : 'KPI unit dan perbaikan'}{company ? ` · ${company}` : ''}</h3>
+        {isShown('pleno') ? <PlenoView g={g} members={members} /> : (
+          <>
+            <Item label="KPI unit" value={[t(kar.nama), t(kar.target) && `target ${kar.target}`].filter(Boolean).join(' · ')} />
+            <Item label="Sasaran di strategy map" value={kar.sasaran} />
+            <Item label="Lead indicator" value={per.lead ?? kar.lead} />
+            <Item label="Gap" value={per.gap} />
+            <Item label="Sumber gap" value={per.sumber} />
+            <Item label="Tuas yang dipilih" value={per.tuas_dipilih} />
+            <Item label="Aksi dan waktu" value={per.aksi} />
+            <Item label="Bantuan yang dibutuhkan" value={per.bantuan} />
+            <Item label="Laporan tiga kalimat" value={[per.lap_status, per.lap_penyebab, per.lap_langkah].map(t).filter(Boolean).join(' ')} />
+          </>
+        )}
         {(cus.rows || []).some((x) => has(x?.customer, x?.kebutuhan, x?.cara)) && (
           <table className="sum-table">
             <thead><tr><th>Customer</th><th>Kebutuhan / masalah</th><th>Cara kami memenuhinya</th></tr></thead>

@@ -10,10 +10,14 @@ const POLARITAS = [
   { value: 'rentang', label: 'Harus dalam rentang' },
 ]
 
-/** Baris per anggota kelompok, disimpan dengan id anggota agar tidak saling timpa. */
+/**
+ * Baris kontribusi, disimpan dengan id peserta. Sejak lembar latihan menjadi milik
+ * masing-masing peserta, hanya baris peserta sendiri yang ditampilkan.
+ */
 function MemberRows({ data, base, set, fields }) {
   const { groupInfo, session } = useWorkbook()
-  const members = groupInfo?.members || []
+  const me = (groupInfo?.members || []).find((m) => m.id === session.id) || { id: session.id, name: 'Saya' }
+  const members = [me]
   const rows = data?.[base] || {}
   return (
     <div className="contrib">
@@ -54,7 +58,7 @@ export function Kartu() {
           <Field label="8 · Bobot" hint="Porsinya dalam penilaian kinerja unit"><Text {...f('bobot')} placeholder="Contoh: 20%" /></Field>
         </div>
         <div className="grid-2">
-          <Field label="Sasaran di strategy map yang didukung" hint={star ? `★ dari strategy map: ${star}` : undefined}>
+          <Field label="Sasaran di strategy map yang didukung" hint={star ? `★ dari strategy map: ${star}` : 'Sasaran tempat Anda menempel KPI ini di strategy map kelompok'}>
             <datalist id="sasaran-kartu">{sasaranOpts.map((s) => <option key={s} value={s} />)}</datalist>
             <Text value={data.sasaran ?? star} onChange={(v) => set('sasaran', v)} list="sasaran-kartu" />
           </Field>
@@ -66,7 +70,7 @@ export function Kartu() {
       <Block title="Lead indicator" hint="Penggerak yang bisa dipantau mingguan">
         <Text {...f('lead')} placeholder="Contoh: rata-rata waktu tunggu muat di terminal" />
       </Block>
-      <Block title="Kontribusi setiap anggota" hint="Kontribusi Anda adalah lead indicator yang berada di zona kendali Anda sendiri.">
+      <Block title="Kontribusi saya" hint="Kontribusi Anda adalah lead indicator yang berada di zona kendali Anda sendiri.">
         <MemberRows data={data} base="kontribusi" set={set} fields={[{ key: 'kontribusi', label: 'Kontribusi saya' }, { key: 'ukuran', label: 'Cara saya mengukurnya' }]} />
       </Block>
     </Sheet>
@@ -174,7 +178,7 @@ export function Perbaikan() {
   const f = (k) => ({ value: data[k], onChange: (v) => set(k, v) })
   return (
     <Sheet c={SHEET.s3_perbaikan} scopeLine={<GroupTag section="s3_perbaikan" />}>
-      <Block title="1 · Pilih satu tuas, bukan sepuluh" hint="Dampak terhadap angka KPI, dan seberapa besar kendali Anda untuk memulainya minggu ini.">
+      <Block title="1 · Pilih satu tuas" hint="Pindahkan ide dari matriks tuas kelompok, atau nilai ide Anda sendiri: dampak terhadap angka KPI, dan seberapa besar kendali Anda untuk memulainya minggu ini.">
         <div className="stack">
           {tuas.slice(0, Math.max(4, tuas.length)).map((t, i) => {
             const q = t.dampak && t.kendali ? TUAS_QUAD[`${t.dampak}-${t.kendali}`] : null
@@ -203,17 +207,14 @@ export function Perbaikan() {
       <Block title="2 · Rencana perbaikan satu halaman" hint={kartu.nama ? `KPI: ${kartu.nama}` : undefined}>
         <div className="plan">
           <Field label="Gap" hint="Angka, target, dan arah tren"><Area {...f('gap')} placeholder="Contoh: Juni 92% terhadap target 95%, turun tiga bulan berturut-turut" /></Field>
-          <Field label="Sumber gap" hint={tracker.sumber_gap ? `Dari tracker: ${SUMBER_GAP[tracker.sumber_gap]}` : undefined}><Area {...f('sumber')} placeholder="Contoh: Proses, antrean muat di terminal pada jam sibuk pagi" /></Field>
+          <Field label="Sumber gap" hint={tracker.sumber_gap ? `Dari tracker: ${SUMBER_GAP[tracker.sumber_gap]}` : 'Akar masalah dari fishbone, atau dari tiga kali bertanya “kenapa”'}><Area {...f('sumber')} placeholder="Contoh: Proses, antrean muat di terminal pada jam sibuk pagi" /></Field>
           <Field label="Tuas yang dipilih"><Area value={data.tuas_dipilih} onChange={(v) => set('tuas_dipilih', v)} /></Field>
           <Field label="Aksi dan waktu"><Area {...f('aksi')} placeholder="Apa, kapan mulai, berapa lama uji coba" /></Field>
           <Field label="Bantuan yang dibutuhkan"><Area {...f('bantuan')} placeholder="Dari siapa, dalam bentuk apa" /></Field>
           <Field label="Lead indicator"><Area value={data.lead ?? kartu.lead ?? ''} onChange={(v) => set('lead', v)} placeholder="Dipantau mingguan" /></Field>
         </div>
       </Block>
-      <Block title="3 · Kontribusi setiap anggota dalam rencana ini">
-        <MemberRows data={data} base="kontribusi" set={set} fields={[{ key: 'kontribusi', label: 'Kontribusi saya' }]} />
-      </Block>
-      <Block title="4 · Laporan tiga kalimat" tone="navy">
+      <Block title="3 · Laporan tiga kalimat" tone="navy">
         <div className="three">
           <Field label="1 · Status" hint="Angka, target, dan arah tren"><Area {...f('lap_status')} /></Field>
           <Field label="2 · Penyebab" hint="Satu penyebab utama, dengan data"><Area {...f('lap_penyebab')} /></Field>
