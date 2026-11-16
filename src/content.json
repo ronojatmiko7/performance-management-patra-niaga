@@ -191,9 +191,9 @@
       "label": "Kartu KPI",
       "group": "Sesi 2 · Bedah KPI Unit",
       "scope": "group",
-      "slide": 32,
+      "slide": 38,
       "slideId": "latihan-kartu",
-      "time": "11.10",
+      "time": "11.20",
       "kicker": "LATIHAN SESI 2 · 40 MENIT",
       "title": "Bedah KPI unit Anda sendiri",
       "steps": [
@@ -218,7 +218,7 @@
       "label": "Tracker",
       "group": "Sesi 3 · Perbaikan Kinerja",
       "scope": "group",
-      "slide": 38,
+      "slide": 44,
       "slideId": "latihan-analisis",
       "time": "13.15",
       "kicker": "LATIHAN SESI 3 · 20 MENIT",
@@ -245,7 +245,7 @@
       "label": "Rencana perbaikan",
       "group": "Sesi 3 · Perbaikan Kinerja",
       "scope": "group",
-      "slide": 46,
+      "slide": 52,
       "slideId": "latihan-perbaikan",
       "time": "14.50",
       "kicker": "LATIHAN SESI 3 · 15 MENIT",
@@ -263,7 +263,7 @@
         ],
         [
           "BERIKUTNYA",
-          "Sampaikan laporan itu kepada “atasan” di latihan berpasangan (slide 47)."
+          "Sampaikan laporan itu kepada “atasan” di latihan berpasangan (slide 53)."
         ]
       ]
     },
@@ -292,7 +292,7 @@
       "label": "Komitmen 30 hari",
       "group": "Penutup",
       "scope": "personal",
-      "slide": 49,
+      "slide": 55,
       "slideId": "komitmen",
       "time": "15.50",
       "kicker": "PENUTUP · KOMITMEN",
@@ -310,7 +310,7 @@
       "label": "Post-test",
       "group": "Penutup",
       "scope": "personal",
-      "slide": 50,
+      "slide": 56,
       "slideId": "posttest",
       "time": "16.00",
       "kicker": "EVALUASI · 16.00 – 16.30",
@@ -326,7 +326,7 @@
       "label": "Evaluasi",
       "group": "Penutup",
       "scope": "personal",
-      "slide": 50,
+      "slide": 56,
       "slideId": "posttest",
       "time": "16.15",
       "kicker": "EVALUASI · 16.00 – 16.30",
