@@ -191,9 +191,9 @@
       "label": "Kartu KPI",
       "group": "Sesi 2 · Bedah KPI Unit",
       "scope": "group",
-      "slide": 38,
+      "slide": 43,
       "slideId": "latihan-kartu",
-      "time": "11.20",
+      "time": "13.00",
       "kicker": "LATIHAN SESI 2 · 40 MENIT",
       "title": "Bedah KPI unit Anda sendiri",
       "steps": [
@@ -218,10 +218,10 @@
       "label": "Tracker",
       "group": "Sesi 3 · Perbaikan Kinerja",
       "scope": "group",
-      "slide": 44,
+      "slide": 48,
       "slideId": "latihan-analisis",
-      "time": "13.15",
-      "kicker": "LATIHAN SESI 3 · 20 MENIT",
+      "time": "13.50",
+      "kicker": "LATIHAN SESI 3 · 15 MENIT",
       "title": "Papan status KPI kelompok",
       "steps": [
         "Buka lembar Tracker. KPI dari Kartu KPI Anda sudah tercantum.",
@@ -245,9 +245,9 @@
       "label": "Rencana perbaikan",
       "group": "Sesi 3 · Perbaikan Kinerja",
       "scope": "group",
-      "slide": 52,
+      "slide": 56,
       "slideId": "latihan-perbaikan",
-      "time": "14.50",
+      "time": "15.05",
       "kicker": "LATIHAN SESI 3 · 15 MENIT",
       "title": "Rencana perbaikan untuk KPI Anda",
       "steps": [
@@ -263,7 +263,7 @@
         ],
         [
           "BERIKUTNYA",
-          "Sampaikan laporan itu kepada “atasan” di latihan berpasangan (slide 53)."
+          "Sampaikan laporan itu kepada “atasan” di latihan berpasangan (slide 57)."
         ]
       ]
     },
@@ -292,7 +292,7 @@
       "label": "Komitmen 30 hari",
       "group": "Penutup",
       "scope": "personal",
-      "slide": 55,
+      "slide": 59,
       "slideId": "komitmen",
       "time": "15.50",
       "kicker": "PENUTUP · KOMITMEN",
@@ -310,7 +310,7 @@
       "label": "Post-test",
       "group": "Penutup",
       "scope": "personal",
-      "slide": 56,
+      "slide": 60,
       "slideId": "posttest",
       "time": "16.00",
       "kicker": "EVALUASI · 16.00 – 16.30",
@@ -326,7 +326,7 @@
       "label": "Evaluasi",
       "group": "Penutup",
       "scope": "personal",
-      "slide": 56,
+      "slide": 60,
       "slideId": "posttest",
       "time": "16.15",
       "kicker": "EVALUASI · 16.00 – 16.30",
